@@ -1,0 +1,12 @@
+gradio
+openai-whisper
+soundfile
+ffmpeg-python
+joblib
+pandas
+numpy
+scikit-learn
+torch
+torchaudio
+tqdm
+spacy
