@@ -4,6 +4,13 @@ This project presents a **Grammar Scoring Engine** that predicts the grammatical
 It uses **Automatic Speech Recognition (ASR)** for transcription and **linguistic feature extraction** (POS-based) to score grammar quality on a **0–5 scale**.
 
 ---
+## 🧾 Important Links
+
+| **Resource** | **Access Link** |
+|---------------|----------------|
+| 🧠 **Hugging Face App (Live Demo)** | [https://huggingface.co/spaces/Satyam0077/voice-grammar-scoring-engine](https://huggingface.co/spaces/Satyam0077/voice-grammar-scoring-engine) |
+| 💾 **Google Drive Dataset & Training Notebook** | [https://drive.google.com/drive/folders/1L3_Z8_G0FMUwDTd_-Jg__di8milr_hI9?usp=sharing](https://drive.google.com/drive/folders/1L3_Z8_G0FMUwDTd_-Jg__di8milr_hI9?usp=sharing) |
+---
 
 ## 🚀 Project Overview
 
@@ -56,16 +63,8 @@ It uses **Automatic Speech Recognition (ASR)** for transcription and **linguisti
 |-------------|-----------|
 | Mean Squared Error (MSE) | 0.34 |
 | R² Score | 0.72 |
-
 ---
 
-## 🧾 Important Links
-
-| **Resource** | **Access Link** |
-|---------------|----------------|
-| 🧠 **Hugging Face App (Live Demo)** | [https://huggingface.co/spaces/Satyam0077/voice-grammar-scoring-engine](https://huggingface.co/spaces/Satyam0077/voice-grammar-scoring-engine) |
-| 💾 **Google Drive Dataset & Training Notebook** | [https://drive.google.com/drive/folders/1L3_Z8_G0FMUwDTd_-Jg__di8milr_hI9?usp=sharing](https://drive.google.com/drive/folders/1L3_Z8_G0FMUwDTd_-Jg__di8milr_hI9?usp=sharing) |
----
 
 ## ⚙️ Tech Stack
 
