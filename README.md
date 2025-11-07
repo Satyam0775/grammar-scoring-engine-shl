@@ -23,6 +23,17 @@ It uses **Automatic Speech Recognition (ASR)** for transcription and **linguisti
 | **Final Output** | Grammar score prediction per audio sample |
 
 ---
+🧩 Difference Between Google Cloud & Hugging Face Versions
+
+⚙️ Google Cloud Version (NLTK-based)
+In Google Cloud, the Grammar Scoring Engine uses NLTK for POS-tagging and tokenization.
+This environment provides full linguistic resources, allowing accurate sentence segmentation, word-level tagging, and better context understanding.
+As a result, both transcription and grammar scoring are more detailed and linguistically precise.
+
+☁️ Hugging Face Version (spaCy-based)
+On Hugging Face Spaces, downloading NLTK taggers and tokenizers during runtime can cause resource errors or timeouts.
+To ensure a faster, lightweight, and stable deployment, the model uses spaCy for linguistic feature extraction instead of NLTK.
+While spaCy runs efficiently, the transcription or POS counts might vary slightly compared to the Google Cloud version.
 
 ## 🧠 Methodology
 
