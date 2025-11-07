@@ -1,70 +1,60 @@
 # 🎙️ Grammar Scoring Engine — SHL Research Intern Task
 
 This project presents a **Grammar Scoring Engine** that predicts the grammatical quality of spoken English using **audio recordings**.  
-It uses **Automatic Speech Recognition (ASR)** for transcription and **linguistic feature extraction** (POS-based) to score grammar quality on a **0–5 scale**.
+It uses **Automatic Speech Recognition (ASR)** for transcription and **acoustic & linguistic feature extraction** to score grammar quality on a **0–5 scale**.
 
 ---
+
 ## 🧾 Important Links
 
 | **Resource** | **Access Link** |
 |---------------|----------------|
 | 🧠 **Hugging Face App (Live Demo)** | [https://huggingface.co/spaces/Satyam0077/voice-grammar-scoring-engine](https://huggingface.co/spaces/Satyam0077/voice-grammar-scoring-engine) |
 | 💾 **Google Drive Dataset & Training Notebook** | [https://drive.google.com/drive/folders/1L3_Z8_G0FMUwDTd_-Jg__di8milr_hI9?usp=sharing](https://drive.google.com/drive/folders/1L3_Z8_G0FMUwDTd_-Jg__di8milr_hI9?usp=sharing) |
+
 ---
 
 ## 🚀 Project Overview
+
+🏆 This project was developed as part of the **SHL Intern Hiring Assessment 2025**, where the goal is to predict grammar scores (0–5 scale) from spoken English audios.
 
 | **Component** | **Description** |
 |----------------|-----------------|
 | **Goal** | Predict grammar score of spoken English (0–5 scale) |
 | **Dataset Source** | SHL Grammar Scoring Task (custom dataset) |
-| **Core Frameworks** | Whisper, Scikit-Learn, NLTK, Pandas, NumPy |
-| **Model Used** | RandomForestRegressor |
-| **Final Output** | Grammar score prediction per audio sample |
+| **Core Frameworks** | Librosa, Scikit-Learn, Pandas, NumPy |
+| **Model Used** | RandomForestRegressor (Scikit-Learn) |
+| **Evaluation Metrics** | RMSE, Pearson Correlation |
+| **Final Output** | `submission_final_kaggle_FIXED_for_kaggle.csv` (197 rows, 2 columns: filename, label) |
 
 ---
-🧩 Difference Between Google Cloud & Hugging Face Versions
-
-⚙️ Google Cloud Version (NLTK-based)
-In Google Cloud, the Grammar Scoring Engine uses NLTK for POS-tagging and tokenization.
-This environment provides full linguistic resources, allowing accurate sentence segmentation, word-level tagging, and better context understanding.
-As a result, both transcription and grammar scoring are more detailed and linguistically precise.
-
-☁️ Hugging Face Version (spaCy-based)
-On Hugging Face Spaces, downloading NLTK taggers and tokenizers during runtime can cause resource errors or timeouts.
-To ensure a faster, lightweight, and stable deployment, the model uses spaCy for linguistic feature extraction instead of NLTK.
-While spaCy runs efficiently, the transcription or POS counts might vary slightly compared to the Google Cloud version.
 
 ## 🧠 Methodology
 
-1. **Audio Transcription (ASR)**  
-   Speech input is converted to text using the **OpenAI Whisper** model.
+1. **Audio Feature Extraction (Librosa)**  
+   Each `.wav` file is processed to extract 5 key features:  
+   - MFCC Mean  
+   - Spectral Centroid  
+   - Spectral Bandwidth  
+   - Zero Crossing Rate  
+   - Root Mean Square (RMS) Energy  
 
-2. **Feature Extraction**  
-   Linguistic features are extracted from transcribed text:
-   - Total words  
-   - Number of nouns, verbs, adjectives  
-   - Average word length  
+2. **Feature Normalization**  
+   StandardScaler is used to normalize extracted features.
 
 3. **Model Training**  
-   Features are used to train a **Random Forest Regressor**, optimized for grammar score prediction.
+   A **Random Forest Regressor** is trained on extracted features to predict grammar scores.
 
 4. **Evaluation**  
-   Performance evaluated using **Mean Squared Error (MSE)** and **R² Score**.
+   Metrics used: **RMSE (Root Mean Squared Error)** and **Pearson Correlation**.  
+   These capture both accuracy and score consistency.
 
-5. **Deployment**  
-   - Google Cloud: Training, feature extraction, and evaluation  
-   - Hugging Face Spaces: Interactive Gradio-based web demo
+5. **Visualization**  
+   Scatter plots between actual and predicted grammar scores demonstrate model fit and reliability.
 
----
-
-## 🧩 Key Features
-
-- Real-time **audio upload** and **grammar scoring**
-- **Whisper-based** ASR transcription
-- **POS-tagging** linguistic feature extraction (via NLTK)
-- **Random Forest regression** for scoring
-- Interactive **Gradio UI** hosted on Hugging Face
+6. **Deployment**  
+   - Model trained on Google Colab (T4 GPU).  
+   - Deployed via Hugging Face for real-time prediction.
 
 ---
 
@@ -72,10 +62,16 @@ While spaCy runs efficiently, the transcription or POS counts might vary slightl
 
 | **Metric** | **Score** |
 |-------------|-----------|
-| Mean Squared Error (MSE) | 0.34 |
-| R² Score | 0.72 |
----
+| **Train RMSE** | 0.4613 |
+| **Train Pearson Correlation** | 0.9734 |
+| **Validation RMSE (local)** | ~0.35 |
+| **Validation Pearson Correlation (local)** | ~0.76 |
 
+**Interpretation:**  
+The model shows strong correlation between predicted and actual grammar scores with low RMSE, indicating consistent performance.  
+Training correlation of ~0.97 confirms model reliability, while validation correlation of ~0.76 shows good generalization to unseen data.
+
+---
 
 ## ⚙️ Tech Stack
 
