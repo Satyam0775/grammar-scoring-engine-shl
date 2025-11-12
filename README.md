@@ -1,4 +1,4 @@
-# 🎙️ Grammar Scoring Engine — SHL Research Intern Task
+# 🎙️ Grammar Scoring Engine — Research Intern Task
 
 This project presents a **Grammar Scoring Engine** that predicts the grammatical quality of spoken English using **audio recordings**.  
 It uses **Automatic Speech Recognition (ASR)** for transcription and **acoustic & linguistic feature extraction** to score grammar quality on a **0–5 scale**.
